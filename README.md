@@ -1,14 +1,14 @@
 # aprendizaje-automatico-grupo6
 
 ## 📑 Índice
-1. [📂 Descripción y Estructura del Proyecto](#1-descripción-y-estructura-del-proyecto)
-2. [🔍 Análisis Exploratorio de Datos (EDA)](#2-análisis-exploratorio-de-datos-eda)
-   1. [📋 Descripción de Variables y Clases](#21-descripción-de-variables-y-clases)
-   2. [📊 Matriz de Correlación](#22-matriz-de-correlación)
-   3. [❌ Eliminación de Variables Irrelevantes](#23-eliminación-de-variables-irrelevantes)
+1. [📂 Descripción y Estructura del Proyecto](#-descripción-y-estructura-del-proyecto)
+2. [🔍 Análisis Exploratorio de Datos (EDA)](#-análisis-exploratorio-de-datos-eda)
+   1. [:pencil: Descripción de Variables y Clases](#21-descripción-de-variables-y-clases)
+   2. [:pencil: Matriz de Correlación](#22-matriz-de-correlación)
+   3. [:pencil: Eliminación de Variables Irrelevantes](#23-eliminación-de-variables-irrelevantes)
 3. [⚙️ Preprocesamiento](#3-preprocesamiento)
-   1. [🧹 Tratamiento de nulos, codificación de variables y escalado de variables numéricas](#31-tratamiento-de-nulos-codificación-de-variables-y-escalado-de-variables-numéricas)
-   2. [🔀 División en conjunto de entrenamiento y prueba](#32-división-en-conjunto-de-entrenamiento-y-prueba)
+   1. [:pencil: Tratamiento de nulos, codificación de variables y escalado de variables numéricas](#31-tratamiento-de-nulos-codificación-de-variables-y-escalado-de-variables-numéricas)
+   2. [:pencil: División en conjunto de entrenamiento y prueba](#32-división-en-conjunto-de-entrenamiento-y-prueba)
 4. [🤖 Implementación de clasificadores](#4-implementación-de-clasificadores)
    1. [💻 Modelo 1: Árbol de decisión](#41-modelo-1-árbol-de-decisión)
    2. [💻 Modelo 2: SVM](#42-modelo-2-svm)
