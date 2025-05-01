@@ -68,17 +68,17 @@ El dataset contiene las siguientes variables:
 - **key**: Tiene una correlación muy baja con casi todas las variables y prácticamente insignificante con el género.
 
 #### Conclusiones de la Matriz de Correlación
-1. Aunque hay variables como **popularity** y **time_signature** que tienen correlaciones muy bajas, pero podrían ser útiles combinadas con las otras variables.
-2. La variable **key** tiene una relación insignificante con casi todas las variables, por lo que será eliminada del dataset.
+1. Aunque hay variables como **popularity** y **time_signature** que tienen correlaciones muy bajas, podrían ser útiles combinadas con las otras variables.
+2. La variable **key** tiene una relación insignificante con casi todas las variables, pero su valor representa el tono musical y podría ser útil.
+3. Solo se eliminarán las variables que correspondan a índices o identificadores únicos; el resto son datos técnicos de la canción que podrían ser útiles para su clasificación
 
 #### 2.3 :pencil: Eliminación de Variables Irrelevantes
 Se eliminaron las siguientes variables por no aportar valor al análisis o por generar ruido en los datos:
 
 - `Unnamed: 0`: identificador de registro sin utilidad analítica.
 - `track_id`: identificador alfanumérico único, no necesario para el modelo.
-- `key`: tiene una relación insignificante con casi todas las variables
   
-Al final quedaron 17 variables Y 1 CLASE O VARIABLE OBJETIVO (track_genre)
+Al final quedaron 18 variables Y 1 CLASE O VARIABLE OBJETIVO (track_genre)
 
 ## 3.- ⚙️ Preprocesamiento
 Dado que el dataset original contiene 114000 filas, se seleccionarán solo 5000 para agilizar la ejecución de las pruebas.
@@ -108,9 +108,9 @@ X_scalado = scaler.fit_transform(X)
 #stratify=Y: garantiza que la proporción de clases (track_genre) sea igual en entrenamiento y prueba.
 X_train, X_test, Y_train, Y_test = train_test_split(X_scalado, Y_codificado, test_size=0.2, random_state=42,stratify=Y_codificado)
 ```
-- **Tamaño del subdataset aleatorio**: (5000, 18)
-- **Tamaño del conjunto de entrenamiento**: (4000, 7655)
-- **Tamaño del conjunto de prueba**: (1000, 7655)
+- **Tamaño del subdataset aleatorio**: (5000, 19)
+- **Tamaño del conjunto de entrenamiento**: (4000, 7656)
+- **Tamaño del conjunto de prueba**: (1000, 7656)
 ## 4.- 🤖 Implementación de clasificadores
 ### 4.1.- 💻 Modelo 1: Árbol de decisión
 
@@ -138,9 +138,9 @@ Los mejores hiperparámetros encontrados fueron:
 ##### Métricas
 | Métrica    | Valor              |
 |------------|--------------------|
-| Precisión  | 0.6971878254582472 |
-| Recall     | 0.6809999999999999 |
-| F1-score   | 0.6864130774970045 |
+| Precisión  | 0.7018081966371774 |
+| Recall     | 0.6849999999999999 |
+| F1-score   | 0.6904668808598403 |
 
 ### 4.2.- 💻 Modelo 2: SVM (con ajuste de kernel y C)
 
