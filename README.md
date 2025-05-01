@@ -98,4 +98,41 @@ X_train, X_test, Y_train, Y_test = train_test_split(X_scalado, Y_codificado, tes
 - **Tamaño del conjunto de prueba**: (1000, 7655)
 ## 3.- 🤖 Implementación de clasificadores
 ### 3.1.- 💻 Modelo 1: Árbol de decisión
--Se utilizaron los Siguiente hiperparámetros: DecisionTreeClassifier(criterion= 'entropy', max_depth= 10, max_features= None, min_samples_leaf= 1, min_samples_split= 2, random_state=42)
+
+Para seleccionar los hiperparámetros, se realizó una búsqueda exhaustiva para encontrar la mejor combinación de parámetros para un modelo de árbol de decisión, utilizando GridSearchCV.
+La búsqueda se configuró de la siguiente manera
+```python
+param_grid = {
+    'criterion': ['gini', 'entropy', 'log_loss'],
+    'max_depth': [None, 5, 10, 20, 30],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4],
+    'max_features': [None, 'sqrt', 'log2']
+}
+#grid_search = GridSearchCV(estimator=clf_tree, param_grid=param_grid,cv=5, n_jobs=-1, verbose=1, scoring='accuracy')
+```
+Los mejores hiperparámetros encontrados fueron:
+- **criterion= 'entropy'**: Este parámetro determina cómo se mide la calidad de una división en el árbol
+- **max_depth=10**: Limita la profundidad máxima del árbol. Esto significa que el árbol no tendrá más de 10 niveles de profundidad, lo cual ayuda a evitar el sobreajuste
+- **max_features=None**: Esto indica que se considerarán todas las características (columnas) del conjunto de datos al hacer cada división en el árbol.
+- **min_samples_leaf=1**: Establece el número mínimo de muestras requeridas en una hoja del árbol. En este caso, solo se necesita 1 muestra en cada hoja. Si se aumenta este valor, el árbol será más general y menos propenso a sobreajustarse.
+- **min_samples_split=2**: Define el número mínimo de muestras necesarias para dividir un nodo. Si un nodo tiene menos de 2 muestras, no se podrá dividir más.
+#### 3.1.1 Resultados
+##### Matriz de Confusión Árbol de decisión*
+![Gráfico de resultados](imagenes/matrizconfusion_arboldecision.png)
+##### Métricas
+| Métrica    | Valor              |
+|------------|--------------------|
+| Precisión  | 0.6971878254582472 |
+| Recall     | 0.6809999999999999 |
+| F1-score   | 0.6864130774970045 |
+
+### 3.2.- 💻 Modelo 2: SVM (con ajuste de kernel y C)
+
+### 3.3.- 💻 Modelo 3: Random Forest 
+
+## 4.- ✅ Comparación experimental
+
+
+
+
