@@ -2,7 +2,7 @@
 
 ## 📑 Índice
 1. [📂 Descripción y Estructura del Proyecto](#-descripción-y-estructura-del-proyecto)
-2. [🔍 Análisis Exploratorio de Datos (EDA)](#-2.--analisis-exploratorio-de-datos-(eda))
+2. [🔍 Análisis Exploratorio de Datos (EDA)](#2-análisis-exploratorio-de-datos-eda)
    1. [:pencil: Descripción de Variables y Clases](#21-descripción-de-variables-y-clases)
    2. [:pencil: Matriz de Correlación](#22-matriz-de-correlación)
    3. [:pencil: Eliminación de Variables Irrelevantes](#23-eliminación-de-variables-irrelevantes)
