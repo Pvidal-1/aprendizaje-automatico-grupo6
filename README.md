@@ -1,19 +1,19 @@
 # aprendizaje-automatico-grupo6
 
 ## 📑 Índice
-1. [📂 Descripción y Estructura del Proyecto](#---descripcion-y-estructura-del-proyecto)
+1. [📂 Descripción y Estructura del Proyecto](#1---descripción-y-estructura-del-proyecto)
 2. [🔍 Análisis Exploratorio de Datos (EDA)](#2---análisis-exploratorio-de-datos-eda)
-   1. [:pencil: Descripción de Variables y Clases](#21-descripción-de-variables-y-clases)
-   2. [:pencil: Matriz de Correlación](#22-matriz-de-correlación)
+   1. [:pencil: Descripción de Variables y Clases](#21--pencil-descripción-de-variables-y-clases)
+   2. [:pencil: Matriz de Correlación](#22-pencil-matriz-de-correlación)
    3. [:pencil: Eliminación de Variables Irrelevantes](#23-eliminación-de-variables-irrelevantes)
-3. [⚙️ Preprocesamiento](#3---preprocesamiento)
-   1. [:pencil: Tratamiento de nulos, codificación de variables y escalado de variables numéricas](#31-tratamiento-de-nulos-codificación-de-variables-y-escalado-de-variables-numéricas)
-   2. [:pencil: División en conjunto de entrenamiento y prueba](#32-división-en-conjunto-de-entrenamiento-y-prueba)
-4. [🤖 Implementación de clasificadores](#4---implementacion-de-clasificadores)
-   1. [💻 Modelo 1: Árbol de decisión](#41-modelo-1-árbol-de-decisión)
-   2. [💻 Modelo 2: SVM](#42-modelo-2-svm)
-   3. [💻 Modelo 3: Random Forest](#43-modelo-3-random-forest)
-5. [✅ Comparación experimental](#5-comparación-experimental)
+3. [⚙️ Preprocesamiento](#3--️-preprocesamiento)
+   1. [:pencil: Tratamiento de nulos, codificación de variables y escalado de variables numéricas](#31-pencil-tratamiento-de-nulos-codificación-de-variables-categóricas-y-escalado-de-variables-numéricas)
+   2. [:pencil: División en conjunto de entrenamiento y prueba](#32-pencil-división-en-conjunto-de-entrenamiento-y-prueba-8020)
+4. [🤖 Implementación de clasificadores](#4---implementación-de-clasificadores)
+   1. [💻 Modelo 1: Árbol de decisión](#41---modelo-1-árbol-de-decisión)
+   2. [💻 Modelo 2: SVM](#42---modelo-2-svm-con-ajuste-de-kernel-y-c)
+   3. [💻 Modelo 3: Random Forest](#43---modelo-3-random-forest)
+5. [✅ Comparación experimental](#5---comparación-experimental)
  
 ## 1.- 📂 Descripción y Estructura del Proyecto
 
@@ -71,7 +71,7 @@ El dataset contiene las siguientes variables:
 1. Aunque hay variables como **popularity** y **time_signature** que tienen correlaciones muy bajas, pero podrían ser útiles combinadas con las otras variables.
 2. La variable **key** tiene una relación insignificante con casi todas las variables, por lo que será eliminada del dataset.
 
-#### Eliminación de Variables Irrelevantes
+#### 2.3 :pencil: Eliminación de Variables Irrelevantes
 Se eliminaron las siguientes variables por no aportar valor al análisis o por generar ruido en los datos:
 
 - `Unnamed: 0`: identificador de registro sin utilidad analítica.
@@ -132,7 +132,7 @@ Los mejores hiperparámetros encontrados fueron:
 - **max_features=None**: Esto indica que se considerarán todas las características (columnas) del conjunto de datos al hacer cada división en el árbol.
 - **min_samples_leaf=1**: Establece el número mínimo de muestras requeridas en una hoja del árbol. En este caso, solo se necesita 1 muestra en cada hoja. Si se aumenta este valor, el árbol será más general y menos propenso a sobreajustarse.
 - **min_samples_split=2**: Define el número mínimo de muestras necesarias para dividir un nodo. Si un nodo tiene menos de 2 muestras, no se podrá dividir más.
-#### 3.1.1 Resultados
+#### 4.1.1 Resultados
 ##### Matriz de Confusión Árbol de decisión*
 ![Gráfico de resultados](imagenes/matrizconfusion_arboldecision.png)
 ##### Métricas
