@@ -136,11 +136,9 @@ Los mejores hiperparámetros encontrados fueron:
 ##### Matriz de Confusión Árbol de decisión*
 ![Gráfico de resultados](imagenes/matrizconfusion_arboldecision.png)
 ##### Métricas
-| Métrica    | Valor              |
-|------------|--------------------|
-| Precisión  | 0.7018081966371774 |
-| Recall     | 0.6849999999999999 |
-| F1-score   | 0.6904668808598403 |
+| Precisión           | Recall             | F1-score           |
+|---------------------|--------------------|--------------------|
+| 0.7018081966371774  | 0.6849999999999999 | 0.6904668808598403 |
 
 ### 4.2.- 💻 Modelo 2: SVM (con ajuste de kernel y C)
 
@@ -148,6 +146,13 @@ Los mejores hiperparámetros encontrados fueron:
 
 ## 5.- ✅ Comparación experimental
 
+Resultados obtenidos:
+
+| Modelo                           | Precisión |  Recall  | F1-score |
+|----------------------------------|-----------|----------|----------|
+| **Modelo 1: Árbol de Decisión**  | 0.7018    | 0.6850   | 0.6905   |
+| **Modelo 2: SVM**                | 0.0000    | 0.0000   | 0.0000   |
+| **Modelo 3: Random Forest**      | 0.0000    | 0.0000   | 0.000    |
 
 
 
