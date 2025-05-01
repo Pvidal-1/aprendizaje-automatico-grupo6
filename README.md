@@ -1,5 +1,20 @@
 # aprendizaje-automatico-grupo6
 
+## 📑 Índice
+1. [📂 Descripción y Estructura del Proyecto](#1-descripción-y-estructura-del-proyecto)
+2. [🔍 Análisis Exploratorio de Datos (EDA)](#2-análisis-exploratorio-de-datos-eda)
+   1. [📋 Descripción de Variables y Clases](#21-descripción-de-variables-y-clases)
+   2. [📊 Matriz de Correlación](#22-matriz-de-correlación)
+   3. [❌ Eliminación de Variables Irrelevantes](#23-eliminación-de-variables-irrelevantes)
+3. [⚙️ Preprocesamiento](#3-preprocesamiento)
+   1. [🧹 Tratamiento de nulos, codificación de variables y escalado de variables numéricas](#31-tratamiento-de-nulos-codificación-de-variables-y-escalado-de-variables-numéricas)
+   2. [🔀 División en conjunto de entrenamiento y prueba](#32-división-en-conjunto-de-entrenamiento-y-prueba)
+4. [🤖 Implementación de clasificadores](#4-implementación-de-clasificadores)
+   1. [💻 Modelo 1: Árbol de decisión](#41-modelo-1-árbol-de-decisión)
+   2. [💻 Modelo 2: SVM](#42-modelo-2-svm)
+   3. [💻 Modelo 3: Random Forest](#43-modelo-3-random-forest)
+5. [✅ Comparación experimental](#5-comparación-experimental)
+ 
 ## 1.- 📂 Descripción y Estructura del Proyecto
 
 El dataset utilizado en este proyecto es el siguiente:
@@ -96,8 +111,8 @@ X_train, X_test, Y_train, Y_test = train_test_split(X_scalado, Y_codificado, tes
 - **Tamaño del subdataset aleatorio**: (5000, 18)
 - **Tamaño del conjunto de entrenamiento**: (4000, 7655)
 - **Tamaño del conjunto de prueba**: (1000, 7655)
-## 3.- 🤖 Implementación de clasificadores
-### 3.1.- 💻 Modelo 1: Árbol de decisión
+## 4.- 🤖 Implementación de clasificadores
+### 4.1.- 💻 Modelo 1: Árbol de decisión
 
 Para seleccionar los hiperparámetros, se realizó una búsqueda exhaustiva para encontrar la mejor combinación de parámetros para un modelo de árbol de decisión, utilizando GridSearchCV.
 La búsqueda se configuró de la siguiente manera
@@ -127,11 +142,11 @@ Los mejores hiperparámetros encontrados fueron:
 | Recall     | 0.6809999999999999 |
 | F1-score   | 0.6864130774970045 |
 
-### 3.2.- 💻 Modelo 2: SVM (con ajuste de kernel y C)
+### 4.2.- 💻 Modelo 2: SVM (con ajuste de kernel y C)
 
-### 3.3.- 💻 Modelo 3: Random Forest 
+### 4.3.- 💻 Modelo 3: Random Forest 
 
-## 4.- ✅ Comparación experimental
+## 5.- ✅ Comparación experimental
 
 
 
