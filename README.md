@@ -133,7 +133,7 @@ Los mejores hiperparámetros encontrados fueron:
 - **min_samples_leaf=1**: Establece el número mínimo de muestras requeridas en una hoja del árbol. En este caso, solo se necesita 1 muestra en cada hoja. Si se aumenta este valor, el árbol será más general y menos propenso a sobreajustarse.
 - **min_samples_split=2**: Define el número mínimo de muestras necesarias para dividir un nodo. Si un nodo tiene menos de 2 muestras, no se podrá dividir más.
 #### 4.1.1 Resultados
-##### Matriz de Confusión Árbol de decisión*
+##### Matriz de Confusión Árbol de decisión
 ![Gráfico de resultados](imagenes/matrizconfusion_arboldecision.png)
 ##### Métricas
 | Precisión           | Recall             | F1-score           |
