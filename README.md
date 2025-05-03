@@ -26,6 +26,8 @@ Deber_Semana2/
 ├── src/                  # Código fuente
 ├── dataset/              # Dataset original, descargado de https://www.kaggle.com/
 ├── imagenes/             # Imágenes generadas en en google Colab durante el desarrollo
+├── colab/                # Código fuente python en Google Colab
+├── presentacion/         # diapositivas
 └── README.md             # Este archivo
 ```
 ## 2.- 🔍 Análisis Exploratorio de Datos (EDA)
@@ -124,7 +126,7 @@ param_grid = {
     'min_samples_leaf': [1, 2, 4],
     'max_features': [None, 'sqrt', 'log2']
 }
-#grid_search = GridSearchCV(estimator=clf_tree, param_grid=param_grid,cv=5, n_jobs=-1, verbose=1, scoring='accuracy')
+grid_search = GridSearchCV(estimator=clf_tree, param_grid=param_grid,cv=5, n_jobs=-1, verbose=1, scoring='accuracy')
 ```
 Los mejores hiperparámetros encontrados fueron:
 - **criterion= 'entropy'**: Este parámetro determina cómo se mide la calidad de una división en el árbol
@@ -141,16 +143,18 @@ Los mejores hiperparámetros encontrados fueron:
 | 0.7018081966371774  | 0.6849999999999999 | 0.6904668808598403 |
 
 ### 4.2.- 💻 Modelo 2: SVM (con ajuste de kernel y C)
-En este modelo SVC se ha seleccionado el kernel lineal, ideal para problemas linealmente separables y de interpretación sencilla. El parámetro C se ha ajustado con distintos valores (0.1, 1, 10) para controlar el equilibrio entre un margen amplio y la clasificación correcta de los puntos de entrenamiento.
+Se ha utilizado RandomizedSearchCV para realizar la búsqueda de los mejores hiperparámetros
+En este modelo SVC se ha seleccionado el kernel lineal, ideal para problemas linealmente separables y de interpretación sencilla. El parámetro C se ha ajustado con distintos valores (0.1, 1, 5, 10) para controlar el equilibrio entre un margen amplio y la clasificación correcta de los puntos de entrenamiento.
 La búsqueda se configuró de la siguiente manera
 ```python
 svc = SVC()
 param_dist_svc = {
-    'C': [0.1, 1, 10],
-    'kernel': ['linear'],
-    'gamma': ['scale']
+    'C': [0.1, 1, 5, 10],
+    'kernel': ['linear', 'rbf', 'poly', 'sigmoid'],
+    'gamma': ['scale', 'auto'], #es relevante cuando el kernel no es linear
+    'degree': [2, 3, 4]  # solo se usará si kernel='poly'
 }
-svc_random = RandomizedSearchCV(svc, param_distributions=param_dist_svc, n_iter=3, cv=3, verbose=1, n_jobs=-1)
+svc_random = RandomizedSearchCV(svc, param_distributions=param_dist_svc, n_iter=3, cv=3, verbose=1, n_jobs=-1, random_state=42, scoring='accuracy')
 svc_random.fit(X_train, Y_train)
 svc_best = svc_random.best_estimator_
 Y_pred_svc = svc_best.predict(X_test)
@@ -166,17 +170,20 @@ Los mejores hiperparámetros encontrados fueron:
 |---------------------|--------------------|--------------------|
 | 0.67                | 0.67               | 0.691648780013269  |
 ### 4.3.- 💻 Modelo 3: Random Forest 
+Se ha utilizado RandomizedSearchCV para realizar la búsqueda de los mejores hiperparámetros
 En este modelo Random Forest se exploraron parámetros clave para controlar la complejidad del árbol y evitar el sobreajuste. Se ajustaron la profundidad máxima del árbol (max_depth), el mínimo de muestras por hoja (min_samples_leaf) y el mínimo de muestras para dividir un nodo (min_samples_split).
 La búsqueda se configuró de la siguiente manera
 ```python
 rf = RandomForestClassifier(random_state=42)
 param_dist_rf = {
-    'n_estimators': [100, 200],
-    'max_depth': [None, 10],
-    'min_samples_leaf': [1, 2],
-    'min_samples_split': [2, 5]
+    'n_estimators': [50, 100, 200, 300],       # árboles
+    'max_depth': [None, 10, 20, 30],           # profundidad del árbol
+    'min_samples_split': [2, 5, 10],           # mínimo de muestras para dividir
+    'min_samples_leaf': [1, 2, 4],             # mínimo de muestras en una hoja
+    'max_features': ['sqrt', 'log2', None],    # número de features usadas por split
+    'bootstrap': [True, False]                 # si usar muestreo con reemplazo
 }
-rf_random = RandomizedSearchCV(rf, param_distributions=param_dist_rf, n_iter=4, cv=3, verbose=1, n_jobs=-1)
+rf_random = RandomizedSearchCV(rf, param_distributions=param_dist_rf, n_iter=4, cv=3, verbose=1, n_jobs=-1,random_state=42,scoring='accuracy')
 rf_random.fit(X_train, Y_train)
 rf_best = rf_random.best_estimator_
 Y_pred_rf = rf_best.predict(X_test)
@@ -201,7 +208,7 @@ Resultados obtenidos:
 | Modelo                           | Precisión |  Recall  | F1-score |
 |----------------------------------|-----------|----------|----------|
 | **Modelo 1: Árbol de Decisión**  | 0.7018    | 0.6850   | 0.6905   |
-| **Modelo 2: SVM**                | 0.6700    | 0.6700   | 0.6916   |
+| **Modelo 2: SVM**                | 0.6700    | 0.6700   | 0.6971   |
 | **Modelo 3: Random Forest**      | 0.6970    | 0.6970   | 0.6948   |
 
 **Random Forest** es el modelo más robusto de los tres por varias razones:
