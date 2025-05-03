@@ -155,9 +155,15 @@ svc_best = svc_random.best_estimator_
 Y_pred_svc = svc_best.predict(X_test)
 ```
 Los mejores hiperparámetros encontrados fueron:
+- En **C = 10**, aunque un valor de 5 podría haber sido suficiente, ya que el rendimiento no varió significativamente.
+- **Se utilizó el **kernel lineal** debido a que alcanzó una precisión del 67%, mientras que con el **kernel RBF** la precisión no superaba el 62%.
 #### 4.2.1 Resultados
 ##### Matriz de Confusión para SVM
 ![Gráfico de resultados](imagenes/matrizconfusion_SVM.png)
+##### Métricas
+| Precisión           | Recall             | F1-score           |
+|---------------------|--------------------|--------------------|
+| 0.67                | 0.67               | 0.691648780013269  |
 ### 4.3.- 💻 Modelo 3: Random Forest 
 
 ## 5.- ✅ Comparación experimental
