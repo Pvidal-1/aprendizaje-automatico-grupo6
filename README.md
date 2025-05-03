@@ -14,6 +14,7 @@
    2. [💻 Modelo 2: SVM](#42---modelo-2-svm-con-ajuste-de-kernel-y-c)
    3. [💻 Modelo 3: Random Forest](#43---modelo-3-random-forest)
 5. [✅ Comparación experimental](#5---comparación-experimental)
+6. [🧑‍💻 Autores](#5---autores)
  
 ## 1.- 📂 Descripción y Estructura del Proyecto
 
@@ -258,7 +259,7 @@ La Recomendación es **afinar el modelo Random Forest**, ya que tiene buen desem
 -  Balanceo de clases
 -  Un Análisis más exhaustivo de importancia de las variables
 
-## 🧑‍💻 Autores
+## 6.- 🧑‍💻 Autores
 
 - **María Paola Mendoza Mendieta**
 - **Andrés Martín Cantos Rivadeneira**
