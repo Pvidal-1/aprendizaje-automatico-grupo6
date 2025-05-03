@@ -180,7 +180,6 @@ param_dist_rf = {
     'max_depth': [None, 10, 20, 30],           # profundidad del árbol
     'min_samples_split': [2, 5, 10],           # mínimo de muestras para dividir
     'min_samples_leaf': [1, 2, 4],             # mínimo de muestras en una hoja
-    'max_features': ['sqrt', 'log2', None],    # número de features usadas por split
     'bootstrap': [True, False]                 # si usar muestreo con reemplazo
 }
 rf_random = RandomizedSearchCV(rf, param_distributions=param_dist_rf, n_iter=4, cv=3, verbose=1, n_jobs=-1,random_state=42,scoring='accuracy')
@@ -189,10 +188,11 @@ rf_best = rf_random.best_estimator_
 Y_pred_rf = rf_best.predict(X_test)
 ```
 Los mejores hiperparámetros encontrados fueron:
-- **n_estimators = 200:** Se usaron 200 árboles para mejorar la estabilidad y reducir la varianza del modelo.
+- **n_estimators = 300:** Se usaron 200 árboles para mejorar la estabilidad y reducir la varianza del modelo.
 - **max_depth = None:** Se permitió que los árboles crecieran sin límite para capturar patrones complejos.
 - **min_samples_leaf = 1:** Se aceptó que cada hoja contenga al menos una muestra, permitiendo alta precisión en los ajustes.
 - **min_samples_split = 2:** Los nodos se dividieron con al menos dos muestras, favoreciendo árboles detallados.
+- **bootstrap = False:** No usar muestreo con reemplazo
 
 #### 4.3.1 Resultados
 ##### Matriz de Confusión para Random Forest
@@ -200,7 +200,7 @@ Los mejores hiperparámetros encontrados fueron:
 ##### Métricas
 | Precisión           | Recall             | F1-score           |
 |---------------------|--------------------|--------------------|
-| 0.697               | 0.6970000000000001 | 0.6948600689406443 |
+| 0.703               | 0.7030000000000001 | 0.7016656311772713 |
 ## 5.- ✅ Comparación experimental
 Se compararon tres modelos de clasificación (Árbol de Decisión, SVM y Random Forest) para evaluar su rendimiento en términos de precisión, recall y F1-score.
 Resultados obtenidos:
@@ -209,15 +209,15 @@ Resultados obtenidos:
 |----------------------------------|-----------|----------|----------|
 | **Modelo 1: Árbol de Decisión**  | 0.7018    | 0.6850   | 0.6905   |
 | **Modelo 2: SVM**                | 0.6700    | 0.6700   | 0.6971   |
-| **Modelo 3: Random Forest**      | 0.6970    | 0.6970   | 0.6948   |
+| **Modelo 3: Random Forest**      | 0.7030    | 0.7030   | 0.7017   |
 
 **Random Forest** es el modelo más robusto de los tres por varias razones:
 
-- **Mejor F1-score (0.6948):** Indica un buen equilibrio entre precisión y recall, lo que es clave cuando hay clases desbalanceadas o ambos errores (falsos positivos y negativos) son importantes.
+- **Mejor F1-score (0.7017):** Indica un buen equilibrio entre precisión y recall, lo que es clave cuando hay clases desbalanceadas o ambos errores (falsos positivos y negativos) son importantes.
 
 - **Mayor estabilidad:** A diferencia del Árbol de Decisión, que puede ser muy sensible a los datos de entrenamiento, Random Forest combina múltiples árboles, reduciendo la varianza y mejorando la generalización.
 
-- **Mejor rendimiento global:** Aunque el Árbol de Decisión tuvo una precisión ligeramente mayor, Random Forest tuvo métricas más equilibradas en general.
+- **Mejor rendimiento global:** Aunque el Árbol de Decisión tuvo una precisión ligeramente igual, Random Forest tuvo métricas más equilibradas en general.
   
 En resumen, Random Forest logró el mejor equilibrio general entre métricas, mientras que el Árbol de Decisión destacó en precisión y SVM en estabilidad del recall.
 
