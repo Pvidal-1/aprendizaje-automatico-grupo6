@@ -142,6 +142,7 @@ Los mejores hiperparámetros encontrados fueron:
 
 ### 4.2.- 💻 Modelo 2: SVM (con ajuste de kernel y C)
 En este modelo SVC se ha seleccionado el kernel lineal, ideal para problemas linealmente separables y de interpretación sencilla. El parámetro C se ha ajustado con distintos valores (0.1, 1, 10) para controlar el equilibrio entre un margen amplio y la clasificación correcta de los puntos de entrenamiento.
+La búsqueda se configuró de la siguiente manera
 ```python
 svc = SVC()
 param_dist_svc = {
@@ -156,7 +157,7 @@ Y_pred_svc = svc_best.predict(X_test)
 ```
 Los mejores hiperparámetros encontrados fueron:
 - En **C = 10**, aunque un valor de 5 podría haber sido suficiente, ya que el rendimiento no varió significativamente.
-- **Se utilizó el **kernel lineal** debido a que alcanzó una precisión del 67%, mientras que con el **kernel RBF** la precisión no superaba el 62%.
+- Se utilizó el **kernel lineal** debido a que alcanzó una precisión del 67%, mientras que con el **kernel RBF** la precisión no superaba el 62%.
 #### 4.2.1 Resultados
 ##### Matriz de Confusión para SVM
 ![Gráfico de resultados](imagenes/matrizconfusion_SVM.png)
@@ -165,7 +166,32 @@ Los mejores hiperparámetros encontrados fueron:
 |---------------------|--------------------|--------------------|
 | 0.67                | 0.67               | 0.691648780013269  |
 ### 4.3.- 💻 Modelo 3: Random Forest 
-
+En este modelo Random Forest se exploraron parámetros clave para controlar la complejidad del árbol y evitar el sobreajuste. Se ajustaron la profundidad máxima del árbol (max_depth), el mínimo de muestras por hoja (min_samples_leaf) y el mínimo de muestras para dividir un nodo (min_samples_split).
+La búsqueda se configuró de la siguiente manera
+```python
+rf = RandomForestClassifier(random_state=42)
+param_dist_rf = {
+    'n_estimators': [100, 200],
+    'max_depth': [None, 10],
+    'min_samples_leaf': [1, 2],
+    'min_samples_split': [2, 5]
+}
+rf_random = RandomizedSearchCV(rf, param_distributions=param_dist_rf, n_iter=4, cv=3, verbose=1, n_jobs=-1)
+rf_random.fit(X_train, Y_train)
+rf_best = rf_random.best_estimator_
+Y_pred_rf = rf_best.predict(X_test)
+```
+-**n_estimators = 200:** Se usaron 200 árboles para mejorar la estabilidad y reducir la varianza del modelo.
+-**max_depth = None:** Se permitió que los árboles crecieran sin límite para capturar patrones complejos.
+-**min_samples_leaf = 1:** Se aceptó que cada hoja contenga al menos una muestra, permitiendo alta precisión en los ajustes.
+-**min_samples_split = 2:** Los nodos se dividieron con al menos dos muestras, favoreciendo árboles detallados.
+#### 4.3.1 Resultados
+##### Matriz de Confusión para Random Forest
+![Gráfico de resultados](imagenes/matrizconfusion_RandomForest.png)
+##### Métricas
+| Precisión           | Recall             | F1-score           |
+|---------------------|--------------------|--------------------|
+| 0.697               | 0.6970000000000001 | 0.6948600689406443 |
 ## 5.- ✅ Comparación experimental
 
 Resultados obtenidos:
@@ -173,8 +199,8 @@ Resultados obtenidos:
 | Modelo                           | Precisión |  Recall  | F1-score |
 |----------------------------------|-----------|----------|----------|
 | **Modelo 1: Árbol de Decisión**  | 0.7018    | 0.6850   | 0.6905   |
-| **Modelo 2: SVM**                | 0.0000    | 0.0000   | 0.0000   |
-| **Modelo 3: Random Forest**      | 0.0000    | 0.0000   | 0.000    |
+| **Modelo 2: SVM**                | 0.6700    | 0.6700   | 0.6916   |
+| **Modelo 3: Random Forest**      | 0.6970    | 0.6970   | 0.6948   |
 
 
 
