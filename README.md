@@ -211,6 +211,37 @@ Resultados obtenidos:
 | **Modelo 2: SVM**                | 0.6700    | 0.6700   | 0.6971   |
 | **Modelo 3: Random Forest**      | 0.7030    | 0.7030   | 0.7017   |
 
+##### Validación Cruzada
+Para la validación cruzada se utilizó la mejor configuración de hiperparámetros encontrada mediante **GridSearchCV y RandomizedSearchCV**, los cuales ya emplean validación cruzada de forma interna.
+Sin embargo, al aplicar **cross_val_score con cv=5**, se obtuvieron los siguientes resultados:
+
+```python
+cv_results = [] # Lista para almacenar resultados
+#Configuración de Modelos
+models = {
+    'Árbol de Decisión': DecisionTreeClassifier(criterion= 'entropy', max_depth= 10, max_features= None, min_samples_leaf= 1, min_samples_split= 2, random_state=42),
+    'SVC': SVC(kernel='linear', C=10 , random_state=42),
+    'Random Forest': RandomForestClassifier(n_estimators=300, max_depth= None, min_samples_leaf= 1, min_samples_split= 2, random_state=42)
+}
+#Ejecutar la Validación Cruzada con 5 Folds
+scores = cross_val_score(models['Árbol de Decisión'],X_scalado, Y_codificado, cv=5, scoring='accuracy')
+cv_results.append({ 'Modelo': 'Árbol de Decisión', 'Accuracy Promedio': scores.mean(), 'Desviación Estándar': scores.std(), 'Scores': scores})
+scores = cross_val_score(models['SVC'],X_scalado, Y_codificado, cv=5, scoring='accuracy')
+cv_results.append({ 'Modelo': 'SVC', 'Accuracy Promedio': scores.mean(), 'Desviación Estándar': scores.std(), 'Scores': scores})
+scores = cross_val_score(models['Random Forest'],X_scalado, Y_codificado, cv=5, scoring='accuracy')
+cv_results.append({ 'Modelo': 'Random Forest', 'Accuracy Promedio': scores.mean(), 'Desviación Estándar': scores.std(), 'Scores': scores})
+```
+| Modelo                           | Accuracy Promedio |  Desviación Estándar  |
+|----------------------------------|-------------------|-----------------------|
+| **Modelo 1: Árbol de Decisión**  | 0.616             | 0.074                 |
+| **Modelo 2: SVM**                | 0.654             | 0.042                 | 
+| **Modelo 3: Random Forest**      | 0.669             | 0.037                | 
+
+Aunque lo valores de Accuracy obtenidos, son diferentes, se sigue mantiendo Random Forest como el mejor modelo.
+
+![Gráfico de resultados](imagenes/validacion_cruzada.png)
+
+##### Conclusiones
 **Random Forest** es el modelo más robusto de los tres por varias razones:
 
 - **Mejor F1-score (0.7017):** Indica un buen equilibrio entre precisión y recall, lo que es clave cuando hay clases desbalanceadas o ambos errores (falsos positivos y negativos) son importantes.
@@ -219,6 +250,10 @@ Resultados obtenidos:
 
 - **Mejor rendimiento global:** Aunque el Árbol de Decisión tuvo una precisión ligeramente igual, Random Forest tuvo métricas más equilibradas en general.
   
-En resumen, Random Forest logró el mejor equilibrio general entre métricas, mientras que el Árbol de Decisión destacó en precisión y SVM en estabilidad del recall.
+En resumen, Random Forest logró el mejor equilibrio general entre métricas, mientras que el Árbol de Decisión destacó en precisión y SVM es el que tiene menos precisión y podría no ser la mejor opción
+La Recomendación es **afinar el modelo Random Forest**, ya que tiene buen desempeño. Se podría explorar:
+-  Más combinaciones de hiperparámetros
+-  Balanceo de clases
+-  Un Análisis más exhaustivo de importancia de las variables
 
 
