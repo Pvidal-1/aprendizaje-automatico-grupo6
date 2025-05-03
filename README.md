@@ -242,6 +242,7 @@ Aunque los valores de accuracy obtenidos son diferentes, **Random Forest** conti
 ![Gráfico de resultados](imagenes/validacion_cruzada.png)
 
 ##### Conclusiones
+
 **Random Forest** es el modelo más robusto de los tres por varias razones:
 
 - **Mejor F1-score (0.7017):** Indica un buen equilibrio entre precisión y recall, lo que es clave cuando hay clases desbalanceadas o ambos errores (falsos positivos y negativos) son importantes.
@@ -257,4 +258,10 @@ La Recomendación es **afinar el modelo Random Forest**, ya que tiene buen desem
 -  Balanceo de clases
 -  Un Análisis más exhaustivo de importancia de las variables
 
+## 👥 Autores
+
+- **María Paola Mendoza Mendieta**
+- **Andrés Martín Cantos Rivadeneira**
+- **Andrea Fernanda Moran Vargas**  
+- **Pedro Jose Vidal Orus**
 
