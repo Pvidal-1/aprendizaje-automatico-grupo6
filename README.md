@@ -141,6 +141,22 @@ Los mejores hiperparámetros encontrados fueron:
 | 0.7018081966371774  | 0.6849999999999999 | 0.6904668808598403 |
 
 ### 4.2.- 💻 Modelo 2: SVM (con ajuste de kernel y C)
+En este modelo SVC se ha seleccionado el kernel lineal, ideal para problemas linealmente separables y de interpretación sencilla. El parámetro C se ha ajustado con distintos valores (0.1, 1, 10) para controlar el equilibrio entre un margen amplio y la clasificación correcta de los puntos de entrenamiento.
+```python
+svc = SVC()
+param_dist_svc = {
+    'C': [0.1, 1, 10],
+    'kernel': ['linear'],
+    'gamma': ['scale']
+}
+svc_random = RandomizedSearchCV(svc, param_distributions=param_dist_svc, n_iter=3, cv=3, verbose=1, n_jobs=-1)
+svc_random.fit(X_train, Y_train)
+svc_best = svc_random.best_estimator_
+Y_pred_svc = svc_best.predict(X_test)
+```
+Los mejores hiperparámetros encontrados fueron:
+#### 4.2.1 Resultados
+##### Matriz de Confusión para SVM
 
 ### 4.3.- 💻 Modelo 3: Random Forest 
 
