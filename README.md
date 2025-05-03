@@ -235,9 +235,9 @@ cv_results.append({ 'Modelo': 'Random Forest', 'Accuracy Promedio': scores.mean(
 |----------------------------------|-------------------|-----------------------|
 | **Modelo 1: Árbol de Decisión**  | 0.616             | 0.074                 |
 | **Modelo 2: SVM**                | 0.654             | 0.042                 | 
-| **Modelo 3: Random Forest**      | 0.669             | 0.037                | 
+| **Modelo 3: Random Forest**      | **0.669**         | **0.037**             | 
 
-Aunque lo valores de Accuracy obtenidos, son diferentes, se sigue mantiendo Random Forest como el mejor modelo.
+Aunque los valores de accuracy obtenidos son diferentes, **Random Forest** continúa siendo el modelo con mejor desempeño. Con un accuracy promedio de **0.669** y una desviación estándar de **0.037**, lo que indica un rendimiento estable y consistente en las diferentes particiones del conjunto de datos.
 
 ![Gráfico de resultados](imagenes/validacion_cruzada.png)
 
