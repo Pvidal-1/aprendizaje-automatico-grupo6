@@ -250,7 +250,8 @@ Aunque los valores de accuracy obtenidos son diferentes, **Random Forest** conti
 
 - **Mejor rendimiento global:** Aunque el Árbol de Decisión tuvo una precisión ligeramente igual, Random Forest tuvo métricas más equilibradas en general.
   
-En resumen, Random Forest logró el mejor equilibrio general entre métricas, mientras que el Árbol de Decisión destacó en precisión y SVM es el que tiene menos precisión y podría no ser la mejor opción
+En resumen, Random Forest logró el mejor equilibrio general entre métricas, mientras que el Árbol de Decisión destacó en precisión y SVM es el que tiene menos precisión y podría no ser la mejor opción.
+
 La Recomendación es **afinar el modelo Random Forest**, ya que tiene buen desempeño. Se podría explorar:
 -  Más combinaciones de hiperparámetros
 -  Balanceo de clases
