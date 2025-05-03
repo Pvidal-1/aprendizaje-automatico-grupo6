@@ -208,7 +208,7 @@ Resultados obtenidos:
 | Modelo                           | Precisión |  Recall  | F1-score |
 |----------------------------------|-----------|----------|----------|
 | **Modelo 1: Árbol de Decisión**  | 0.7018    | 0.6850   | 0.6905   |
-| **Modelo 2: SVM**                | 0.6700    | 0.6700   | 0.6971   |
+| **Modelo 2: SVM**                | 0.6700    | 0.6700   | 0.6916   |
 | **Modelo 3: Random Forest**      | 0.7030    | 0.7030   | 0.7017   |
 
 ##### Validación Cruzada
@@ -258,7 +258,7 @@ La Recomendación es **afinar el modelo Random Forest**, ya que tiene buen desem
 -  Balanceo de clases
 -  Un Análisis más exhaustivo de importancia de las variables
 
-## 👥 Autores
+## 🧑‍💻 Autores
 
 - **María Paola Mendoza Mendieta**
 - **Andrés Martín Cantos Rivadeneira**
