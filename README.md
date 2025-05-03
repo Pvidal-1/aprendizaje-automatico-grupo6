@@ -157,7 +157,7 @@ Y_pred_svc = svc_best.predict(X_test)
 Los mejores hiperparámetros encontrados fueron:
 #### 4.2.1 Resultados
 ##### Matriz de Confusión para SVM
-
+![Gráfico de resultados](imagenes/matrizconfusion_SVM.png)
 ### 4.3.- 💻 Modelo 3: Random Forest 
 
 ## 5.- ✅ Comparación experimental
