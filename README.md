@@ -189,7 +189,7 @@ rf_best = rf_random.best_estimator_
 Y_pred_rf = rf_best.predict(X_test)
 ```
 Los mejores hiperparámetros encontrados fueron:
-- **n_estimators = 300:** Se usaron 200 árboles para mejorar la estabilidad y reducir la varianza del modelo.
+- **n_estimators = 300:** Se usaron 300 árboles para mejorar la estabilidad y reducir la varianza del modelo.
 - **max_depth = None:** Se permitió que los árboles crecieran sin límite para capturar patrones complejos.
 - **min_samples_leaf = 1:** Se aceptó que cada hoja contenga al menos una muestra, permitiendo alta precisión en los ajustes.
 - **min_samples_split = 2:** Los nodos se dividieron con al menos dos muestras, favoreciendo árboles detallados.
